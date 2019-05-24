@@ -7,150 +7,64 @@
 <meta name="description" content="钟声吻霞光">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1558697882634">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1558697955415">
 <link rel="stylesheet" href="https://www.phemon.me/styles/main.css">
 
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
+
   </head>
   <body>
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://www.phemon.me">Phemon</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="/" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
+    <div id="app" class="main">
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <h2 class="current-tag">标签: Codeforces</h2>
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://www.phemon.me/post/cf-shi-zhi-ji">CF失智记</a>
-    </h2>
-    <p class="article-meta">
-      2019-04-07
-      
-        <a href="https://www.phemon.me/tag/cf" class="badge ">
-          Codeforces
-        </a>
-      
-        <a href="https://www.phemon.me/tag/match" class="badge warning">
-          比赛
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://www.phemon.me/post/cf-shi-zhi-ji" class="readmore-link">
-        <button>
-          Read More
-        </button>
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://www.phemon.me">
+        <img src="https://www.phemon.me/images/avatar.png?v=1558697955415" class="site-logo">
+        <h1 class="site-title">Phemon</h1>
       </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://www.phemon.me/post/codeforces-538-div2">Codeforces-538-Div.2</a>
-    </h2>
-    <p class="article-meta">
-      2019-02-21
-      
-        <a href="https://www.phemon.me/tag/cf" class="badge secondary">
-          Codeforces
-        </a>
-      
-        <a href="https://www.phemon.me/tag/match" class="badge warning">
-          比赛
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>22:05场，对我来说没什么熬夜的压力，但是，但是，但是…… 这时候有热刺-莱斯特城啊。
-21:30开始的英超，看到22:02急急忙忙去开电脑，然后还有20秒到22:05的时候，准备开始看Problem A，然后 就进球了。
-急忙去看回放，然后等开始写的时候已经开始五分钟了。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://www.phemon.me/post/codeforces-538-div2" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-
-        </div>
-        <div class="row flex-edges">
-  
-  
-</div>
-
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
       </div>
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://www.phemon.me/images/avatar.png?v=1558697882634" class="no-responsive avatar">
-    <div class="text-muted">钟声吻霞光</div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
     <div class="social-container">
       
         
@@ -164,86 +78,61 @@
         
       
     </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
+    <div class="site-description">
+      钟声吻霞光
     </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://www.phemon.me/post/qian-yi-dao-github-pages">迁移到Github Pages</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://www.phemon.me/post/bi-ji-xuan-xian-fa">【笔记】悬线法</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://www.phemon.me/post/cf-shi-zhi-ji">CF失智记</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://www.phemon.me/post/codeforces-538-div2">Codeforces-538-Div.2</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://www.phemon.me/post/ti-jie-uva10918-tri-tiling">【题解】UVA10918 – Tri Tiling</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://www.phemon.me/post/about">关于</a>
-            </li>
-          
-        
-      </ul>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
     </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://www.phemon.me/tag/notes" class="badge success">
-          笔记
-        </a>
-      
-        <a href="https://www.phemon.me/tag/oi" class="badge secondary">
-          OI
-        </a>
-      
-        <a href="https://www.phemon.me/tag/cf" class="badge secondary">
-          Codeforces
-        </a>
-      
-        <a href="https://www.phemon.me/tag/match" class="badge secondary">
-          比赛
-        </a>
-      
-        <a href="https://www.phemon.me/tag/solution" class="badge secondary">
-          题解
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
   </div>
 </div>
 
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <h2 class="current-tag">标签: Codeforces</h2>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://www.phemon.me/post/cf-shi-zhi-ji">
+                  <h2 class="post-title">CF失智记</h2>
+                </a>
+                <div class="post-date">
+                  2019-04-07
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://www.phemon.me/post/codeforces-538-div2">
+                  <h2 class="post-title">Codeforces-538-Div.2</h2>
+                </a>
+                <div class="post-date">
+                  2019-02-21
+                </div>
+                <div class="post-abstract">
+                  <p>22:05场，对我来说没什么熬夜的压力，但是，但是，但是…… 这时候有热刺-莱斯特城啊。
+21:30开始的英超，看到22:02急急忙忙去开电脑，然后还有20秒到22:05的时候，准备开始看Problem A，然后 就进球了。
+急忙去看回放，然后等开始写的时候已经开始五分钟了。</p>
+
+                </div>
+              </div>
+              
+            </article>
+          
+
+          <div class="pagination-container">
+  
+  
+</div>
+
+        </div>
+      </div>
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -253,6 +142,13 @@
 AOS.init();
 
 hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
 </script>
 
