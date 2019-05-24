@@ -1643,3 +1643,8 @@ td {
 .katex .mtable .col-align-r > .vlist {
   text-align: right;
 }
+
+      </script>
+<canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;"></canvas>
+<script type="text/javascript" src="http://www.phemon.me/djtx.js"></script>
+    
