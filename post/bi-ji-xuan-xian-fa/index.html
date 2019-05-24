@@ -1,0 +1,470 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>【笔记】悬线法 | Phemon</title>
+<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1558697654673">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://www.phemon.me/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://www.phemon.me">
+  <img class="avatar" src="https://www.phemon.me/images/avatar.png?v=1558697654673" alt="">
+  </a>
+  <h1 class="site-title">
+    Phemon
+  </h1>
+  <p class="site-description">
+    钟声吻霞光
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/Phemon" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="http://weibo.com/247647893" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/phemon/activities" target="_blank">
+          <i class="fab fa-zhihu"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              【笔记】悬线法
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-04-19 ·
+              </time>
+              
+                <a href="https://www.phemon.me/tag/notes" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://www.phemon.me/tag/oi" class="post-tags">
+                  # OI
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>悬线法，用于求解最大子矩阵问题。</p>
+<!-- more -->
+<p>有效子矩形：内部不包含障碍点的、轮廓与整个矩形平行或重合的子矩形。
+极大子矩形：每条边都不能向外扩展的有效子矩形。
+最大子矩形：所有有效子矩形中最大的一个（或多个）。</p>
+<p>思路： 在一个有障碍点的矩形中最大子矩形一定是极大子矩形。 所以枚举所有的极大子矩形，找到最大子矩形。
+本质为动态规划？</p>
+<p>转移：</p>
+<pre><code>/* 定义：left[i][j]表示从(i,j)这个点出发向【左】能到达最远的【坐标】
+         right[i][j]表示从(i,j)这个点出发向【右】能到达最远的【坐标】
+         up[i][j]表示从(i,j)这个点出发向【上】能到达最远的【距离】
+*/
+if(满足转移条件){
+    right[i][j]=min(right[i][j],right[i-1][j]);
+    left[i][j]=max(left[i][j],left[i-1][j]);
+    up[i][j]=up[i-1][j]+1;
+}
+</code></pre>
+<p>但是显然进行求解之前要预处理</p>
+<pre><code>for(int i=1;i&lt;=n;i++)
+    for(int j=1;j&lt;=m;j++)
+        right[i][j]=left[i][j]=j,up[i][j]=1;
+for(int i=1;i&lt;=n;i++)
+    for(int j=2;j&lt;=m;j++)
+        if(满足条件)
+            right[i][j]=right[i][j-1];
+for(int i=1;i&lt;=n;i++)
+    for(int j=m-1;j&gt;=1;j--)
+        if(满足条件)
+            left[i][j]=left[i][j+1];
+</code></pre>
+<p>其实还是十分简单的。
+这个算法的思路像它的名字一样形象——悬线法：像一根线在移动探测各端点。</p>
+<h1 id="下面是n倍经验模板题时间"><strong>下面是N倍经验模板题时间</strong></h1>
+<p><a href="https://www.luogu.org/problemnew/show/P1387">Luogu P1387 最大正方形</a>
+挺模板的，直接上代码（我不会说这题用这个扯淡悬线法其实比直接DP慢好几倍的）。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n, m, a[110][110];
+int l[110][110], r[110][110], up[110][110], ans;
+int main(){
+    cin &gt;&gt; n &gt;&gt; m;
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = 1; j &lt;= m;j++){
+            cin &gt;&gt; a[i][j], l[i][j] = r[i][j] = j, up[i][j] = 1;
+        }
+    }
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = 2; j &lt;= m;j++){
+            if(a[i][j]==a[i][j-1]&amp;&amp;a[i][j])
+                l[i][j] = l[i][j - 1];
+        }
+    }
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = m - 1; j &gt;= 1; j--){
+            if(a[i][j]==a[i][j+1]&amp;&amp;a[i][j])
+                r[i][j] = r[i][j + 1];
+        }
+    }
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = 1; j &lt;= m;j++){
+            if(i&gt;1){
+                if(a[i][j]==a[i-1][j]&amp;&amp;a[i][j]){
+                    l[i][j] = max(l[i][j], l[i - 1][j]);
+                    r[i][j] = min(r[i][j], r[i - 1][j]);
+                    up[i][j] = up[i - 1][j] + 1;
+                }
+            }
+            ans = max(min(r[i][j] - l[i][j] + 1, up[i][j]), ans);
+        }
+    }
+    cout &lt;&lt; ans;
+}
+</code></pre>
+<p><a href="https://www.luogu.org/problemnew/show/P1169">Luogu P1169 [ZJOI2007]棋盘制作</a>
+虽然是ZJOI的水题，但是跟上一个题基本一样，注意条件变成了01相间，即 a[i][j]!=a[i][j±1]</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n, m, a[4010][4010];
+int l[4010][4010], r[4010][4010], up[4010][4010], ans1, ans2;
+int main(){
+    cin &gt;&gt; n &gt;&gt; m;
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = 1; j &lt;= m;j++){
+            scanf(&quot;%d&quot;, &amp;a[i][j]), l[i][j] = r[i][j] = j, up[i][j] = 1;
+        }
+    }
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = 2; j &lt;= m;j++){
+            if(a[i][j]!=a[i][j-1])
+                l[i][j] = l[i][j - 1];
+        }
+    }
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = m - 1; j &gt;= 1; j--){
+            if(a[i][j]!=a[i][j+1])
+                r[i][j] = r[i][j + 1];
+        }
+    }
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = 1; j &lt;= m;j++){
+            if(i&gt;1){
+                if(a[i][j]!=a[i-1][j]){
+                    l[i][j] = max(l[i][j], l[i - 1][j]);
+                    r[i][j] = min(r[i][j], r[i - 1][j]);
+                    up[i][j] = up[i - 1][j] + 1;
+                }
+            }
+            int a = r[i][j] - l[i][j] + 1;
+            int b = min(a, up[i][j]);
+            ans1 = max(b * b, ans1);
+            ans2 = max(a * up[i][j], ans2);
+        }
+    }
+    printf(&quot;%d\n%d&quot;, ans1, ans2);
+}
+</code></pre>
+<p><a href="https://www.luogu.org/problemnew/show/P4147">Luogu P4147 玉蟾宫</a>
+还是基本一样，最后面积乘以三就行</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n, m;
+char a[4005][4005];
+int l[4005][4005], r[4005][4005], up[4005][4005], ans1, ans2;
+int main()
+{
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    for (int i = 1; i &lt;= n; i++)
+        for (int j = 1; j &lt;= m; j++){
+            scanf(&quot;%d&quot;, &amp;a[i][j]);
+            l[i][j] = r[i][j] = j, up[i][j] = 1;
+        }
+    for (int i = 1; i &lt;= n; i++)
+        for (int j = 2; j &lt;= m; j++)
+            if (a[i][j] == a[i][j - 1] &amp;&amp; a[i][j] == 'F')
+                l[i][j] = l[i][j - 1];
+    for (int i = 1; i &lt;= n; i++)
+        for (int j = m - 1; j &gt;= 1; j--)
+            if (a[i][j] == a[i][j + 1] &amp;&amp; a[i][j] == 'F')
+                r[i][j] = r[i][j + 1];
+    for (int i = 1; i &lt;= n; i++)
+        for (int j = 1; j &lt;= m; j++){
+            if (i &gt; 1)
+                if (a[i][j] == a[i - 1][j] &amp;&amp; a[i - 1][j] == 'F'){
+                    l[i][j] = max(l[i][j], l[i - 1][j]);
+                    r[i][j] = min(r[i][j], r[i - 1][j]);
+                    up[i][j] = up[i - 1][j] + 1;
+                }
+            int a = r[i][j] - l[i][j] + 1;
+            int b = min(a, up[i][j]);
+            ans2 = max(a * up[i][j], ans2);
+        }
+    cout &lt;&lt; ans2 * 3;
+    return 0;
+}
+</code></pre>
+<p>放这个题的原因是此题还有一个单调栈的做法，也很巧妙。</p>
+<blockquote>
+<p>1.我们按行去划分，O(n)枚举行，对该行即以上的部分做最大矩阵处理；
+2.那么我们用pos数组记录每行向上可延伸的最大距离，预处理的方式即为：
+(1)读到一个‘F’，该处pos=上一行该列pos的值+1；
+(2)读到一个‘R’，该处pos=0（因为该处不可向上伸展）；
+3.那么对于每次枚举:对该行及以上的部分从左往右或从右往左进行一次单增栈，每次弹栈时更新最大面积;
+(1)栈内每个单位存入两个元素：该单位高度height和对应可控宽度length，对于每个大于栈顶直接入栈的元素，stack[i].length=1；
+(2)对于需要先弹栈再入栈的元素，其length=弹栈所有元素length之和+1，因为被弹栈的元素的高度均≥当前元素，所以其可控范围应加上被其弹栈元素的length；
+(3)在弹栈过程中，记录一个temp为本次弹栈到当前为止弹出的宽度，因为为单增栈，所以每个高度均可控其后被弹栈元素的宽度，所以其对应的面积为s=temp*h[i]，取max更新该行的maxs；
+4.对每次枚举的maxs取max即为最终答案；
+[FROM LUOGU.ORG @假假]</p>
+</blockquote>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+
+struct node{
+    int height,length;
+}stack[1010]; 
+int n,m,i,j,k,pos[1010][1010],ans=0,maxs=0;
+char x;
+
+inline int read(){
+    int x=0;
+    bool f=true;
+    char c;
+    c=getchar();
+    while(c&lt;'0'||c&gt;'9'){
+        if(c=='-') f=false;
+        c=getchar();
+    }
+    while(c&gt;='0'&amp;&amp;c&lt;='9'){
+        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48);
+        c=getchar();
+    }
+    return f?x:-x;
+} 
+
+char getc()
+{
+    char c=getchar();
+    while(c!='R'&amp;&amp;c!='F')c=getchar();
+    return c;
+}
+
+void calc(int x){
+    int top=1,temp=0;
+    maxs=0;
+    stack[1].height=pos[x][1];
+    stack[1].length=1;
+    for(i=2;i&lt;=m;++i){
+        temp=0;
+        while(stack[top].height&gt;=pos[x][i]&amp;&amp;top&gt;0){
+            temp+=stack[top].length;
+            maxs=max(maxs,stack[top--].height*temp);
+        }
+        stack[++top].height=pos[x][i];
+        stack[top].length=temp+1;
+    }
+    temp=0;
+    while(top&gt;0){
+        temp+=stack[top].length;
+        maxs=max(maxs,stack[top--].height*temp);
+    }
+    ans=max(ans,maxs);
+}
+
+int main(){
+    memset(pos,0,sizeof(pos));
+    n=read();
+    m=read();
+    for(i=1;i&lt;=n;++i)
+        for(j=1;j&lt;=m;++j){
+            x=getc();
+            if(x=='F')pos[i][j]=pos[i-1][j]+1;
+        }
+    for(k=1;k&lt;=n;++k) calc(k);
+    ans*=3;
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.luogu.org/problemnew/show/P1578">Luogu P1578 奶牛浴场</a>
+继续用原来的方法显然会炸时间空间（both）。
+这回横着扫一遍，竖着扫一遍。</p>
+<pre><code>【代码来自luogu.org @A·H_】
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#define st short int
+using namespace std;
+inline int read(){
+    char chr=getchar();    int f=1,ans=0;
+    while(!isdigit(chr)) {if(chr=='-') f=-1;chr=getchar();}
+    while(isdigit(chr))  {ans=(ans&lt;&lt;3)+(ans&lt;&lt;1);ans+=chr-'0';chr=getchar();}
+    return ans*f;
+}
+void write(int x){
+    if(x&lt;0) putchar('-'),x=-x;
+    if(x&gt;9) write(x/10);
+    putchar(x%10+'0');
+}
+struct P{int x,y;}a[5005];
+int L,W,n,x,y,ans;
+bool cmp1(const P &amp;x,const P &amp;y){return x.x&lt;y.x||x.x==y.x&amp;&amp;x.y&lt;y.y;}
+bool cmp2(const P &amp;x,const P &amp;y){return x.y&lt;y.y||x.y==y.y&amp;&amp;x.x&lt;y.x;}
+int main(){
+    L=read(),W=read(),n=read();
+    for(int i=1;i&lt;=n;i++)x=read(),y=read(),a[i]=(P){x,y};
+    a[++n]=(P){0,0},a[++n]=(P){0,W},a[++n]=(P){L,0},a[++n]=(P){L,W};
+    sort(a+1,a+n+1,cmp1);
+    for(int i=1;i&lt;=n;i++){
+        int le=0,ri=W,cnt=i;
+        while(a[i].x==a[cnt].x) cnt++;
+        int j=cnt;
+        while(j&lt;=n){
+            ans=max(ans,(a[j].x-a[i].x)*(ri-le));
+            if(a[j].y&lt;=a[i].y) le=max(le,a[j].y);
+            else ri=min(ri,a[j].y);
+            ++j;
+        }le=0,ri=W,j=cnt;
+        while(j&lt;=n){
+            ans=max(ans,(a[j].x-a[i].x)*(ri-le));
+            if(a[j].y&lt;a[i].y) le=max(le,a[j].y);
+            else ri=min(ri,a[j].y);
+            ++j;
+        }
+    }sort(a+1,a+n+1,cmp2);
+    for(int i=1;i&lt;=n;i++){
+        int le=0,ri=L,cnt=i;
+        while(a[i].y==a[cnt].y) cnt++;
+        int j=cnt;
+        while(j&lt;=n){
+            ans=max(ans,(a[j].y-a[i].y)*(ri-le));
+            if(a[j].x&lt;=a[i].x) le=max(le,a[j].x);
+            else ri=min(ri,a[j].x);
+            ++j;
+        }le=0,ri=L,j=cnt;
+        while(j&lt;=n){
+            ans=max(ans,(a[j].y-a[i].y)*(ri-le));
+            if(a[j].x&lt;a[i].x) le=max(le,a[j].x);
+            else ri=min(ri,a[j].x);
+            ++j;
+        }
+    }cout&lt;&lt;ans;
+    return 0;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://www.phemon.me/post/cf-shi-zhi-ji">
+              <h3 class="post-title">
+                CF失智记
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'a3cc5c1b8b629705dce5',
+    clientSecret: '18ceb9d591e7ed0a3f5ca0d147314314c098611c',
+    repo: 'gitalk',
+    owner: 'Phemon',
+    admin: ['Phemon'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
