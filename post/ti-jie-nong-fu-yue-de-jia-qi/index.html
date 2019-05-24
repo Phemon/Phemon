@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>【题解】UVA10918 – Tri Tiling | Phemon</title>
+<title>【题解】农夫约的假期 | Phemon</title>
 <link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1558699963719">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://www.phemon.me/styles/main.css">
@@ -84,11 +84,11 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              【题解】UVA10918 – Tri Tiling
+              【题解】农夫约的假期
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-02-14 ·
+                · 2019-05-04 ·
               </time>
               
                 <a href="https://www.phemon.me/tag/oi" class="post-tags">
@@ -102,38 +102,47 @@
             </div>
             
             <div class="post-content">
-              <p><a href="https://uva.onlinejudge.org/external/109/p10918.pdf">题目描述传送门</a></p>
-<p>题意：对3×n的面积使用1×2的块进行完美覆盖，计算方案总数。</p>
+              <p>这题看题面是看不懂的，神题一枚。需要通过样例推测题面。
+这题的坑点在于，声音可以拐弯。如果不能拐弯，样例中的最佳点应该在为 2 1。</p>
 <!-- more -->
-<p>1.若n为奇数，则3×n为奇数，所以用1×2的块无法进行完美覆盖，方案数为0。
-2.若n为偶数，将这n列每2列分开，如果这一列与前面分开，就只有三种方法即 3×f[n-2]；若不分开，则不可分解的方案只有两种，即2×（f[n-4]+f[n-6]+……+f[0])。</p>
-<p>由上可得
-f[i]=3×f[i-2]+2×(f[i-4]+f[i-6]+…+f[0]) ①
-f[i-2]=3×f[i-4]+2×(f[i-6]+…f[0]) ②
-①-②,得f[i]=4×f[i-2]-f[i-4].</p>
-<pre><code>#include&lt;bits/stdc++.h&gt;
+<p>这样，声音的加强值=（z*曼哈顿距离）（题面中好像忘了写z是干什么用的） 。
+看数据范围，n,m&lt;=100000，显然开不下二维数组来保存他们。显然，不存在O（1）解法（因为需要对输入的点进行处理）。
+把行和列分开考虑，显然（曼哈顿距离），你选择的点的横（纵）坐标与其他所有点的横（纵）坐标的差的绝对值总和最小时，方案最优。
+显然，可以发现选择中位数时最优（如果你认为这不显然请去做一下货仓选址问题）。
+题目不要求选择的点必须在给出的m个点上，所以直接把行和列分开考录。分别排序后取中位数，求出魔音值即可。</p>
+<pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
+long long n, m, z, xx, yy, sum;
+int x[100010], y[100010], q[100010];
 int main()
 {
-    int n;
-    int a[31];
-    a[0]=1;
-    a[2]=3;
-    int i;
-    for(i=1;i&lt;=30;i=i+2)
-        a[i]=0;
-    for(i=4;i&lt;=30;i=i+2)
-        a[i]=a[i-2]*4-a[i-4];
-    while (scanf(&quot;%d&quot;,&amp;n)&amp;&amp;n!=-1)
-        printf(&quot;%d\n&quot;,a[n]);
-    return 0;
-} 
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; z;
+    for (int i = 1; i &lt;= m; i++)
+        scanf(&quot;%d%d%d&quot;, &amp;x[i], &amp;y[i], &amp;q[i]), sum += q[i];
+    sort(x + 1, x + 1 + m);
+    sort(y + 1, y + 1 + m);
+    xx = x[(m + 1) &gt;&gt; 1], yy = y[(m + 1) &gt;&gt; 1];
+    for (int i = 1; i &lt;= m; i++)
+        sum += z * (abs(xx - x[i]) + abs(yy - y[i]));
+    cout &lt;&lt; sum &lt;&lt; endl
+         &lt;&lt; xx &lt;&lt; &quot; &quot; &lt;&lt; yy;
+}
 </code></pre>
+<p><strong>PS: 没开long long 100-&gt;50 rank10 of 16 长个教训吧！</strong></p>
 
             </div>
           </article>
         </div>
     
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://www.phemon.me/post/bi-ji-xuan-xian-fa">
+              <h3 class="post-title">
+                【笔记】悬线法
+              </h3>
+            </a>
+          </div>  
         
 
         
