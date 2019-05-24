@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Codeforces-538-Div.2 | Phemon</title>
-<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1558696296754">
+<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1558696403914">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://www.phemon.me/styles/main.css">
 
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://www.phemon.me">
-  <img class="avatar" src="https://www.phemon.me/images/avatar.png?v=1558696296754" alt="">
+  <img class="avatar" src="https://www.phemon.me/images/avatar.png?v=1558696403914" alt="">
   </a>
   <h1 class="site-title">
     Phemon
@@ -94,15 +94,13 @@
             </div>
             
             <div class="post-content">
-              <pre><code>	22:05场，对我来说没什么熬夜的压力，但是，但是，但是…… 这时候有热刺-莱斯特城啊。
-	21:30开始的英超，看到22:02急急忙忙去开电脑，然后还有20秒到22:05的时候，准备开始看Problem A，然后 就进球了。
-	急忙去看回放，然后等开始写的时候已经开始五分钟了。
-</code></pre>
+              <p>22:05场，对我来说没什么熬夜的压力，但是，但是，但是…… 这时候有热刺-莱斯特城啊。
+21:30开始的英超，看到22:02急急忙忙去开电脑，然后还有20秒到22:05的时候，准备开始看Problem A，然后 就进球了。
+急忙去看回放，然后等开始写的时候已经开始五分钟了。</p>
 <!-- more -->
-<pre><code>	一看Problem A，就知道这次要凉。
-	虽然难度还是不大，但是英文题面还是比以前略难理解 00:08 submit Problem A，居然是一遍过（现在pj-能一遍过对我来说是奢望）。
-	和以前一样，模拟题，题意不解释了。
-</code></pre>
+<p>一看Problem A，就知道这次要凉。
+虽然难度还是不大，但是英文题面还是比以前略难理解 00:08 submit Problem A，居然是一遍过（现在pj-能一遍过对我来说是奢望）。
+和以前一样，模拟题，题意不解释了。</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int main(){
@@ -126,13 +124,11 @@ int main(){
     return 0;
 }  
 </code></pre>
-<pre><code>	Problem B看了半天都不会，然后就去看球了^-^，应该是个贪心，代码还没提交不知道对不对就先不发了。（其实仔细看看好像还挺简单的，好像把前mk个数分开就好了，但是当时光顾着看球了）。
-	
-	Problem C还是挺简单的（我觉得） 就是求n!在k进制下末尾零的个数。看完球离比赛结束就不到半个小时了，慌慌忙忙写完了，还挺幸运的，最后也是一遍过。
-	n！能整除几个k，那末尾就有几个0（短除法转换进制，显然可得此结论）。
-	给k分解质因数，然后对于每个质因数，求出n!里有多少个质因数，然后如果k里有x个这个质因数，则求出的结果除以x。最后的答案为这些结果的最小值。
-	如何求n!里包含质因数的个数？由于n!是1乘到n，所以每p(p是质数)个数里一定有一个p，然后这些数中每p个里一定还有个p，以此类推即可算出。
-</code></pre>
+<p>Problem B看了半天都不会，然后就去看球了^-^，应该是个贪心，代码还没提交不知道对不对就先不发了。（其实仔细看看好像还挺简单的，好像把前mk个数分开就好了，但是当时光顾着看球了）。</p>
+<p>Problem C还是挺简单的（我觉得） 就是求n!在k进制下末尾零的个数。看完球离比赛结束就不到半个小时了，慌慌忙忙写完了，还挺幸运的，最后也是一遍过。
+n！能整除几个k，那末尾就有几个0（短除法转换进制，显然可得此结论）。
+给k分解质因数，然后对于每个质因数，求出n!里有多少个质因数，然后如果k里有x个这个质因数，则求出的结果除以x。最后的答案为这些结果的最小值。
+如何求n!里包含质因数的个数？由于n!是1乘到n，所以每p(p是质数)个数里一定有一个p，然后这些数中每p个里一定还有个p，以此类推即可算出。</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
 long long n,k,ans=1e18;
@@ -153,9 +149,8 @@ int main(){
     return 0;
 } 
 </code></pre>
-<pre><code>	剩下的基本就不太会了（Problem D是个区间dp？看题的时候一边看球，没仔细想）。
-	这一晚上基本上没干啥，但是我学到了一个教训：
-</code></pre>
+<p>剩下的基本就不太会了（Problem D是个区间dp？看题的时候一边看球，没仔细想）。
+这一晚上基本上没干啥，但是我学到了一个教训：</p>
 <blockquote>
 <pre><code>  	足球和OI不可兼得。
 </code></pre>
