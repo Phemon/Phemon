@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>【题解】UVA10918 – Tri Tiling | Phemon</title>
-<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1558761424451">
+<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1558761498010">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://www.phemon.me/styles/main.css">
 
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://www.phemon.me">
-  <img class="avatar" src="https://www.phemon.me/images/avatar.png?v=1558761424451" alt="">
+  <img class="avatar" src="https://www.phemon.me/images/avatar.png?v=1558761498010" alt="">
   </a>
   <h1 class="site-title">
     Phemon
@@ -109,12 +109,12 @@
               <p><a href="https://uva.onlinejudge.org/external/109/p10918.pdf">题目描述传送门</a></p>
 <p>题意：对3×n的面积使用1×2的块进行完美覆盖，计算方案总数。</p>
 <!-- more -->
-<p>1.若n为奇数，则3×n为奇数，所以用1×2的块无法进行完美覆盖，方案数为0。
-2.若n为偶数，将这n列每2列分开，如果这一列与前面分开，就只有三种方法即 3×f[n-2]；若不分开，则不可分解的方案只有两种，即2×（f[n-4]+f[n-6]+……+f[0])。</p>
+<p>1.若n为奇数，则3×n为奇数，所以用1×2的块无法进行完美覆盖，方案数为0。</p>
+<p>2.若n为偶数，将这n列每2列分开，如果这一列与前面分开，就只有三种方法即 3×f[n-2]；若不分开，则不可分解的方案只有两种，即2×（f[n-4]+f[n-6]+……+f[0])。</p>
 <p>由上可得
-f[i]=3×f[i-2]+2×(f[i-4]+f[i-6]+…+f[0]) ①
-f[i-2]=3×f[i-4]+2×(f[i-6]+…f[0]) ②
-①-②,得f[i]=4×f[i-2]-f[i-4].</p>
+f[i]=3×f[i-2]+2×(f[i-4]+f[i-6]+…+f[0]) ①</p>
+<p>f[i-2]=3×f[i-4]+2×(f[i-6]+…f[0]) ②</p>
+<p>①-②,得f[i]=4×f[i-2]-f[i-4].</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int main()
