@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.phemon.me</id>
+    <title>Phemon</title>
+    <updated>2019-05-28T11:21:30.717Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://www.phemon.me"/>
+    <link rel="self" href="https://www.phemon.me/atom.xml"/>
+    <subtitle>钟声吻霞光</subtitle>
+    <logo>https://www.phemon.me/images/avatar.png</logo>
+    <icon>https://www.phemon.me/favicon.ico</icon>
+    <rights>All rights reserved 2019, Phemon</rights>
+    <entry>
+        <title type="html"><![CDATA[【置顶】迁移到Github Pages]]></title>
+        <id>https://www.phemon.me/post/zhi-ding-qian-yi-dao-github-pages</id>
+        <link href="https://www.phemon.me/post/zhi-ding-qian-yi-dao-github-pages">
+        </link>
+        <updated>2019-05-24T01:18:25.000Z</updated>
+        <content type="html"><![CDATA[<p>之前的服务器挪作他用，blog迁移至Github pages。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[【题解】病毒入侵]]></title>
+        <id>https://www.phemon.me/post/ti-jie-bing-du-ru-qin</id>
+        <link href="https://www.phemon.me/post/ti-jie-bing-du-ru-qin">
+        </link>
+        <updated>2019-05-06T12:10:09.000Z</updated>
+        <summary type="html"><![CDATA[<p>这数据强度，每次询问跑一遍肯定是不行的，考虑把询问离线。</p>
+<p>显然，可以把询问和给出的边都按照v从小到大排序，依次考虑每个询问，对于每次询问，加入不大于该询问的v的边，同时使用一个并查集进行统计，同时统计该联通块点个数、最大值和最大值个数。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这数据强度，每次询问跑一遍肯定是不行的，考虑把询问离线。</p>
+<p>显然，可以把询问和给出的边都按照v从小到大排序，依次考虑每个询问，对于每次询问，加入不大于该询问的v的边，同时使用一个并查集进行统计，同时统计该联通块点个数、最大值和最大值个数。</p>
+<!-- more -->
+<p>这种模拟，当时敲了四十多分钟，还是太菜了！
+压着2s时限ac的代码：</p>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int N = 300010, M = 400000;
+int n, m, q;
+int a[N], b[N], imp[N], cnt[N], ga[N], v[N];
+int p[3000010], fa[N];
+struct node{
+    int x, y, v;
+} l[M];
+struct att{
+    int n, v, st, i;
+} g[100010];
+struct Ans{
+    int A, C, B;
+} ans[100010];
+bool cmp(node a, node b){
+    return a.v &lt; b.v;
+}
+bool cmp2(att a, att b){
+    return a.v &lt; b.v;
+}
+int find(int x){
+    if (fa[x] == x)
+        return x;
+    else
+        return fa[x] = find(fa[x]);
+}
+long long sumb;
+int main(){
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; q;
+    for (int i = 1; i &lt;= n; i++)
+        scanf(&quot;%d&quot;, &amp;a[i]);
+    for (int i = 1; i &lt;= n; i++)
+        scanf(&quot;%d&quot;, &amp;b[i]), sumb += b[i];
+    for (int i = 1; i &lt;= m; i++)
+        scanf(&quot;%d%d%d&quot;, &amp;l[i].x, &amp;l[i].y, &amp;l[i].v);
+    for (int i = 1; i &lt;= N; i++){
+        fa[i] = i;
+        imp[i] = a[i];
+        cnt[i] = 1;
+        ga[i] = b[i];
+    }
+    for (int i = 1; i &lt;= q; i++){
+        scanf(&quot;%d%d&quot;, &amp;g[i].n, &amp;g[i].v);
+        g[i].i = i;
+        g[i].st = g[i - 1].st + g[i - 1].n;
+        for (int j = g[i].st; j &lt; g[i].st + g[i].n; j++)
+            scanf(&quot;%d&quot;, &amp;p[j]);
+    }
+    sort(l + 1, l + m + 1, cmp);
+    sort(g + 1, g + q + 1, cmp2);
+    int ls = 1;
+    for (int i = 1; i &lt;= q; i++){
+        for (; l[ls].v &lt;= g[i].v &amp;&amp; ls &lt;= m; ls++){
+            int xx = find(l[ls].x), yy = find(l[ls].y);
+            if (xx == yy)
+                continue;
+            fa[yy] = xx;
+            if (imp[xx] == imp[yy])
+                cnt[xx] += cnt[yy];
+            if (imp[xx] &lt; imp[yy])
+                imp[xx] = imp[yy], cnt[xx] = cnt[yy];
+            ga[xx] += ga[yy];
+        }
+        for (int j = g[i].st; j &lt; g[i].st + g[i].n; j++){
+            int fp = find(p[j]);
+            if (v[fp] == i)
+                continue;
+            v[fp] = i;
+            if (ans[g[i].i].A == imp[fp])
+                ans[g[i].i].C += cnt[fp];
+            if (ans[g[i].i].A &lt; imp[fp])
+                ans[g[i].i].A = imp[fp], ans[g[i].i].C = cnt[fp];
+            ans[g[i].i].B += ga[fp];
+        }
+    }
+    for (int i = 1; i &lt;= q; i++)
+        printf(&quot;%lld %d\n&quot;, 1ll * ans[i].A * ans[i].C, sumb - ans[i].B);
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[【题解】农夫约的假期]]></title>
+        <id>https://www.phemon.me/post/ti-jie-nong-fu-yue-de-jia-qi</id>
+        <link href="https://www.phemon.me/post/ti-jie-nong-fu-yue-de-jia-qi">
+        </link>
+        <updated>2019-05-04T12:11:36.000Z</updated>
+        <summary type="html"><![CDATA[<p>这题看题面是看不懂的，神题一枚。需要通过样例推测题面。
+这题的坑点在于，声音可以拐弯。如果不能拐弯，样例中的最佳点应该在为 2 1。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这题看题面是看不懂的，神题一枚。需要通过样例推测题面。
+这题的坑点在于，声音可以拐弯。如果不能拐弯，样例中的最佳点应该在为 2 1。</p>
+<!-- more -->
+<p>这样，声音的加强值=（z*曼哈顿距离）（题面中好像忘了写z是干什么用的） 。
+看数据范围，n,m&lt;=100000，显然开不下二维数组来保存他们。显然，不存在O（1）解法（因为需要对输入的点进行处理）。
+把行和列分开考虑，显然（曼哈顿距离），你选择的点的横（纵）坐标与其他所有点的横（纵）坐标的差的绝对值总和最小时，方案最优。
+显然，可以发现选择中位数时最优（如果你认为这不显然请去做一下货仓选址问题）。
+题目不要求选择的点必须在给出的m个点上，所以直接把行和列分开考录。分别排序后取中位数，求出魔音值即可。</p>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+long long n, m, z, xx, yy, sum;
+int x[100010], y[100010], q[100010];
+int main()
+{
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; z;
+    for (int i = 1; i &lt;= m; i++)
+        scanf(&quot;%d%d%d&quot;, &amp;x[i], &amp;y[i], &amp;q[i]), sum += q[i];
+    sort(x + 1, x + 1 + m);
+    sort(y + 1, y + 1 + m);
+    xx = x[(m + 1) &gt;&gt; 1], yy = y[(m + 1) &gt;&gt; 1];
+    for (int i = 1; i &lt;= m; i++)
+        sum += z * (abs(xx - x[i]) + abs(yy - y[i]));
+    cout &lt;&lt; sum &lt;&lt; endl
+         &lt;&lt; xx &lt;&lt; &quot; &quot; &lt;&lt; yy;
+}
+</code></pre>
+<p><strong>PS: 没开long long 100-&gt;50 rank10 of 16 长个教训吧！</strong></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[【笔记】悬线法]]></title>
+        <id>https://www.phemon.me/post/bi-ji-xuan-xian-fa</id>
+        <link href="https://www.phemon.me/post/bi-ji-xuan-xian-fa">
+        </link>
+        <updated>2019-04-19T11:25:47.000Z</updated>
+        <summary type="html"><![CDATA[<p>悬线法，用于求解最大子矩阵问题。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>悬线法，用于求解最大子矩阵问题。</p>
+<!-- more -->
+<p>有效子矩形：内部不包含障碍点的、轮廓与整个矩形平行或重合的子矩形。
+极大子矩形：每条边都不能向外扩展的有效子矩形。
+最大子矩形：所有有效子矩形中最大的一个（或多个）。</p>
+<p>思路： 在一个有障碍点的矩形中最大子矩形一定是极大子矩形。 所以枚举所有的极大子矩形，找到最大子矩形。
+本质为动态规划？</p>
+<p>转移：</p>
+<pre><code>/* 定义：left[i][j]表示从(i,j)这个点出发向【左】能到达最远的【坐标】
+         right[i][j]表示从(i,j)这个点出发向【右】能到达最远的【坐标】
+         up[i][j]表示从(i,j)这个点出发向【上】能到达最远的【距离】
+*/
+if(满足转移条件){
+    right[i][j]=min(right[i][j],right[i-1][j]);
+    left[i][j]=max(left[i][j],left[i-1][j]);
+    up[i][j]=up[i-1][j]+1;
+}
+</code></pre>
+<p>但是显然进行求解之前要预处理</p>
+<pre><code>for(int i=1;i&lt;=n;i++)
+    for(int j=1;j&lt;=m;j++)
+        right[i][j]=left[i][j]=j,up[i][j]=1;
+for(int i=1;i&lt;=n;i++)
+    for(int j=2;j&lt;=m;j++)
+        if(满足条件)
+            right[i][j]=right[i][j-1];
+for(int i=1;i&lt;=n;i++)
+    for(int j=m-1;j&gt;=1;j--)
+        if(满足条件)
+            left[i][j]=left[i][j+1];
+</code></pre>
+<p>其实还是十分简单的。
+这个算法的思路像它的名字一样形象——悬线法：像一根线在移动探测各端点。</p>
+<h1 id="下面是n倍经验模板题时间"><strong>下面是N倍经验模板题时间</strong></h1>
+<p><a href="https://www.luogu.org/problemnew/show/P1387">Luogu P1387 最大正方形</a>
+挺模板的，直接上代码（我不会说这题用这个扯淡悬线法其实比直接DP慢好几倍的）。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n, m, a[110][110];
+int l[110][110], r[110][110], up[110][110], ans;
+int main(){
+    cin &gt;&gt; n &gt;&gt; m;
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = 1; j &lt;= m;j++){
+            cin &gt;&gt; a[i][j], l[i][j] = r[i][j] = j, up[i][j] = 1;
+        }
+    }
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = 2; j &lt;= m;j++){
+            if(a[i][j]==a[i][j-1]&amp;&amp;a[i][j])
+                l[i][j] = l[i][j - 1];
+        }
+    }
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = m - 1; j &gt;= 1; j--){
+            if(a[i][j]==a[i][j+1]&amp;&amp;a[i][j])
+                r[i][j] = r[i][j + 1];
+        }
+    }
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = 1; j &lt;= m;j++){
+            if(i&gt;1){
+                if(a[i][j]==a[i-1][j]&amp;&amp;a[i][j]){
+                    l[i][j] = max(l[i][j], l[i - 1][j]);
+                    r[i][j] = min(r[i][j], r[i - 1][j]);
+                    up[i][j] = up[i - 1][j] + 1;
+                }
+            }
+            ans = max(min(r[i][j] - l[i][j] + 1, up[i][j]), ans);
+        }
+    }
+    cout &lt;&lt; ans;
+}
+</code></pre>
+<p><a href="https://www.luogu.org/problemnew/show/P1169">Luogu P1169 [ZJOI2007]棋盘制作</a>
+虽然是ZJOI的水题，但是跟上一个题基本一样，注意条件变成了01相间，即 a[i][j]!=a[i][j±1]</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n, m, a[4010][4010];
+int l[4010][4010], r[4010][4010], up[4010][4010], ans1, ans2;
+int main(){
+    cin &gt;&gt; n &gt;&gt; m;
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = 1; j &lt;= m;j++){
+            scanf(&quot;%d&quot;, &amp;a[i][j]), l[i][j] = r[i][j] = j, up[i][j] = 1;
+        }
+    }
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = 2; j &lt;= m;j++){
+            if(a[i][j]!=a[i][j-1])
+                l[i][j] = l[i][j - 1];
+        }
+    }
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = m - 1; j &gt;= 1; j--){
+            if(a[i][j]!=a[i][j+1])
+                r[i][j] = r[i][j + 1];
+        }
+    }
+    for (int i = 1; i &lt;= n;i++){
+        for (int j = 1; j &lt;= m;j++){
+            if(i&gt;1){
+                if(a[i][j]!=a[i-1][j]){
+                    l[i][j] = max(l[i][j], l[i - 1][j]);
+                    r[i][j] = min(r[i][j], r[i - 1][j]);
+                    up[i][j] = up[i - 1][j] + 1;
+                }
+            }
+            int a = r[i][j] - l[i][j] + 1;
+            int b = min(a, up[i][j]);
+            ans1 = max(b * b, ans1);
+            ans2 = max(a * up[i][j], ans2);
+        }
+    }
+    printf(&quot;%d\n%d&quot;, ans1, ans2);
+}
+</code></pre>
+<p><a href="https://www.luogu.org/problemnew/show/P4147">Luogu P4147 玉蟾宫</a>
+还是基本一样，最后面积乘以三就行</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n, m;
+char a[4005][4005];
+int l[4005][4005], r[4005][4005], up[4005][4005], ans1, ans2;
+int main()
+{
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    for (int i = 1; i &lt;= n; i++)
+        for (int j = 1; j &lt;= m; j++){
+            scanf(&quot;%d&quot;, &amp;a[i][j]);
+            l[i][j] = r[i][j] = j, up[i][j] = 1;
+        }
+    for (int i = 1; i &lt;= n; i++)
+        for (int j = 2; j &lt;= m; j++)
+            if (a[i][j] == a[i][j - 1] &amp;&amp; a[i][j] == 'F')
+                l[i][j] = l[i][j - 1];
+    for (int i = 1; i &lt;= n; i++)
+        for (int j = m - 1; j &gt;= 1; j--)
+            if (a[i][j] == a[i][j + 1] &amp;&amp; a[i][j] == 'F')
+                r[i][j] = r[i][j + 1];
+    for (int i = 1; i &lt;= n; i++)
+        for (int j = 1; j &lt;= m; j++){
+            if (i &gt; 1)
+                if (a[i][j] == a[i - 1][j] &amp;&amp; a[i - 1][j] == 'F'){
+                    l[i][j] = max(l[i][j], l[i - 1][j]);
+                    r[i][j] = min(r[i][j], r[i - 1][j]);
+                    up[i][j] = up[i - 1][j] + 1;
+                }
+            int a = r[i][j] - l[i][j] + 1;
+            int b = min(a, up[i][j]);
+            ans2 = max(a * up[i][j], ans2);
+        }
+    cout &lt;&lt; ans2 * 3;
+    return 0;
+}
+</code></pre>
+<p>放这个题的原因是此题还有一个单调栈的做法，也很巧妙。</p>
+<blockquote>
+<p>1.我们按行去划分，O(n)枚举行，对该行即以上的部分做最大矩阵处理；
+2.那么我们用pos数组记录每行向上可延伸的最大距离，预处理的方式即为：
+(1)读到一个‘F’，该处pos=上一行该列pos的值+1；
+(2)读到一个‘R’，该处pos=0（因为该处不可向上伸展）；
+3.那么对于每次枚举:对该行及以上的部分从左往右或从右往左进行一次单增栈，每次弹栈时更新最大面积;
+(1)栈内每个单位存入两个元素：该单位高度height和对应可控宽度length，对于每个大于栈顶直接入栈的元素，stack[i].length=1；
+(2)对于需要先弹栈再入栈的元素，其length=弹栈所有元素length之和+1，因为被弹栈的元素的高度均≥当前元素，所以其可控范围应加上被其弹栈元素的length；
+(3)在弹栈过程中，记录一个temp为本次弹栈到当前为止弹出的宽度，因为为单增栈，所以每个高度均可控其后被弹栈元素的宽度，所以其对应的面积为s=temp*h[i]，取max更新该行的maxs；
+4.对每次枚举的maxs取max即为最终答案；
+[FROM LUOGU.ORG @假假]</p>
+</blockquote>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+
+struct node{
+    int height,length;
+}stack[1010]; 
+int n,m,i,j,k,pos[1010][1010],ans=0,maxs=0;
+char x;
+
+inline int read(){
+    int x=0;
+    bool f=true;
+    char c;
+    c=getchar();
+    while(c&lt;'0'||c&gt;'9'){
+        if(c=='-') f=false;
+        c=getchar();
+    }
+    while(c&gt;='0'&amp;&amp;c&lt;='9'){
+        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(c^48);
+        c=getchar();
+    }
+    return f?x:-x;
+} 
+
+char getc()
+{
+    char c=getchar();
+    while(c!='R'&amp;&amp;c!='F')c=getchar();
+    return c;
+}
+
+void calc(int x){
+    int top=1,temp=0;
+    maxs=0;
+    stack[1].height=pos[x][1];
+    stack[1].length=1;
+    for(i=2;i&lt;=m;++i){
+        temp=0;
+        while(stack[top].height&gt;=pos[x][i]&amp;&amp;top&gt;0){
+            temp+=stack[top].length;
+            maxs=max(maxs,stack[top--].height*temp);
+        }
+        stack[++top].height=pos[x][i];
+        stack[top].length=temp+1;
+    }
+    temp=0;
+    while(top&gt;0){
+        temp+=stack[top].length;
+        maxs=max(maxs,stack[top--].height*temp);
+    }
+    ans=max(ans,maxs);
+}
+
+int main(){
+    memset(pos,0,sizeof(pos));
+    n=read();
+    m=read();
+    for(i=1;i&lt;=n;++i)
+        for(j=1;j&lt;=m;++j){
+            x=getc();
+            if(x=='F')pos[i][j]=pos[i-1][j]+1;
+        }
+    for(k=1;k&lt;=n;++k) calc(k);
+    ans*=3;
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.luogu.org/problemnew/show/P1578">Luogu P1578 奶牛浴场</a>
+继续用原来的方法显然会炸时间空间（both）。
+这回横着扫一遍，竖着扫一遍。</p>
+<pre><code>【代码来自luogu.org @A·H_】
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#define st short int
+using namespace std;
+inline int read(){
+    char chr=getchar();    int f=1,ans=0;
+    while(!isdigit(chr)) {if(chr=='-') f=-1;chr=getchar();}
+    while(isdigit(chr))  {ans=(ans&lt;&lt;3)+(ans&lt;&lt;1);ans+=chr-'0';chr=getchar();}
+    return ans*f;
+}
+void write(int x){
+    if(x&lt;0) putchar('-'),x=-x;
+    if(x&gt;9) write(x/10);
+    putchar(x%10+'0');
+}
+struct P{int x,y;}a[5005];
+int L,W,n,x,y,ans;
+bool cmp1(const P &amp;x,const P &amp;y){return x.x&lt;y.x||x.x==y.x&amp;&amp;x.y&lt;y.y;}
+bool cmp2(const P &amp;x,const P &amp;y){return x.y&lt;y.y||x.y==y.y&amp;&amp;x.x&lt;y.x;}
+int main(){
+    L=read(),W=read(),n=read();
+    for(int i=1;i&lt;=n;i++)x=read(),y=read(),a[i]=(P){x,y};
+    a[++n]=(P){0,0},a[++n]=(P){0,W},a[++n]=(P){L,0},a[++n]=(P){L,W};
+    sort(a+1,a+n+1,cmp1);
+    for(int i=1;i&lt;=n;i++){
+        int le=0,ri=W,cnt=i;
+        while(a[i].x==a[cnt].x) cnt++;
+        int j=cnt;
+        while(j&lt;=n){
+            ans=max(ans,(a[j].x-a[i].x)*(ri-le));
+            if(a[j].y&lt;=a[i].y) le=max(le,a[j].y);
+            else ri=min(ri,a[j].y);
+            ++j;
+        }le=0,ri=W,j=cnt;
+        while(j&lt;=n){
+            ans=max(ans,(a[j].x-a[i].x)*(ri-le));
+            if(a[j].y&lt;a[i].y) le=max(le,a[j].y);
+            else ri=min(ri,a[j].y);
+            ++j;
+        }
+    }sort(a+1,a+n+1,cmp2);
+    for(int i=1;i&lt;=n;i++){
+        int le=0,ri=L,cnt=i;
+        while(a[i].y==a[cnt].y) cnt++;
+        int j=cnt;
+        while(j&lt;=n){
+            ans=max(ans,(a[j].y-a[i].y)*(ri-le));
+            if(a[j].x&lt;=a[i].x) le=max(le,a[j].x);
+            else ri=min(ri,a[j].x);
+            ++j;
+        }le=0,ri=L,j=cnt;
+        while(j&lt;=n){
+            ans=max(ans,(a[j].y-a[i].y)*(ri-le));
+            if(a[j].x&lt;a[i].x) le=max(le,a[j].x);
+            else ri=min(ri,a[j].x);
+            ++j;
+        }
+    }cout&lt;&lt;ans;
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CF失智记]]></title>
+        <id>https://www.phemon.me/post/cf-shi-zhi-ji</id>
+        <link href="https://www.phemon.me/post/cf-shi-zhi-ji">
+        </link>
+        <updated>2019-04-07T11:21:36.000Z</updated>
+        <summary type="html"><![CDATA[<p>长教训了，以后绝对不随便报CF比赛。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>长教训了，以后绝对不随便报CF比赛。</p>
+<!-- more -->
+<p>报了GlobalRound2，Problem A知道是二分，但是懒得写那几行，写了暴力连Pretest都过不去，老老实实写二分，Pretest通过。
+Problem B 感觉还是二分啊？？？？？把Problem A一改过了样例就交，结果Pretest就WA。又看了两遍没发现自己哪错了，觉得不可做就去打实况了。
+结果第二天再登发现自己Problem A也挂了。
+rank一下掉了100多。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Codeforces-538-Div.2]]></title>
+        <id>https://www.phemon.me/post/codeforces-538-div2</id>
+        <link href="https://www.phemon.me/post/codeforces-538-div2">
+        </link>
+        <updated>2019-02-21T15:04:53.000Z</updated>
+        <summary type="html"><![CDATA[<p>22:05场，对我来说没什么熬夜的压力，但是，但是，但是…… 这时候有热刺-莱斯特城啊。
+21:30开始的英超，看到22:02急急忙忙去开电脑，然后还有20秒到22:05的时候，准备开始看Problem A，然后 就进球了。
+急忙去看回放，然后等开始写的时候已经开始五分钟了。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>22:05场，对我来说没什么熬夜的压力，但是，但是，但是…… 这时候有热刺-莱斯特城啊。
+21:30开始的英超，看到22:02急急忙忙去开电脑，然后还有20秒到22:05的时候，准备开始看Problem A，然后 就进球了。
+急忙去看回放，然后等开始写的时候已经开始五分钟了。</p>
+<!-- more -->
+<p>一看Problem A，就知道这次要凉。
+虽然难度还是不大，但是英文题面还是比以前略难理解 00:08 submit Problem A，居然是一遍过（现在pj-能一遍过对我来说是奢望）。
+和以前一样，模拟题，题意不解释了。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int main(){
+    int a, b, c, d, e, f;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d &gt;&gt; e &gt;&gt; f;
+    bool ok = 1;
+    if(a&lt;=d)
+        d -= a;
+    else
+        ok = 0;
+    if(ok==1&amp;&amp;d+e&gt;=b){
+        if(d+e+f-b&lt;c)
+            ok = 0;
+    }
+    else
+        ok = 0;
+    if(ok==0)
+        cout &lt;&lt; &quot;NO&quot;;
+    else
+        cout &lt;&lt; &quot;YES&quot;;
+    return 0;
+}  
+</code></pre>
+<p>Problem B看了半天都不会，然后就去看球了^-^，应该是个贪心，代码还没提交不知道对不对就先不发了。（其实仔细看看好像还挺简单的，好像把前mk个数分开就好了，但是当时光顾着看球了）。</p>
+<p>Problem C还是挺简单的（我觉得） 就是求n!在k进制下末尾零的个数。看完球离比赛结束就不到半个小时了，慌慌忙忙写完了，还挺幸运的，最后也是一遍过。
+n！能整除几个k，那末尾就有几个0（短除法转换进制，显然可得此结论）。
+给k分解质因数，然后对于每个质因数，求出n!里有多少个质因数，然后如果k里有x个这个质因数，则求出的结果除以x。最后的答案为这些结果的最小值。
+如何求n!里包含质因数的个数？由于n!是1乘到n，所以每p(p是质数)个数里一定有一个p，然后这些数中每p个里一定还有个p，以此类推即可算出。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+long long n,k,ans=1e18;
+long long sum(long long a,long long b){
+    long long cnt=0;
+    for(a/=b;a;a/=b) cnt+=a;
+    return cnt;
+}
+int main(){
+    cin&gt;&gt;n&gt;&gt;k;
+    for(long long i=2;i*i&lt;=k;++i){
+        long long cnt=0;
+        while(k%i==0) ++cnt,k/=i; 
+        if(cnt) ans=min(ans,sum(n,i)/cnt);
+    }
+    if(k&gt;1) ans=min(ans,sum(n,k));
+    cout&lt;&lt;ans;
+    return 0;
+} 
+</code></pre>
+<p>剩下的基本就不太会了（Problem D是个区间dp？看题的时候一边看球，没仔细想）。
+这一晚上基本上没干啥，但是我学到了一个教训：</p>
+<blockquote>
+<pre><code>  	足球和OI不可兼得。
+</code></pre>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[【题解】UVA10918 – Tri Tiling]]></title>
+        <id>https://www.phemon.me/post/ti-jie-uva10918-tri-tiling</id>
+        <link href="https://www.phemon.me/post/ti-jie-uva10918-tri-tiling">
+        </link>
+        <updated>2019-02-14T11:16:17.000Z</updated>
+        <summary type="html"><![CDATA[<p><a href="https://uva.onlinejudge.org/external/109/p10918.pdf">题目描述传送门</a></p>
+<p>题意：对3×n的面积使用1×2的块进行完美覆盖，计算方案总数。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p><a href="https://uva.onlinejudge.org/external/109/p10918.pdf">题目描述传送门</a></p>
+<p>题意：对3×n的面积使用1×2的块进行完美覆盖，计算方案总数。</p>
+<!-- more -->
+<p>1.若n为奇数，则3×n为奇数，所以用1×2的块无法进行完美覆盖，方案数为0。</p>
+<p>2.若n为偶数，将这n列每2列分开，如果这一列与前面分开，就只有三种方法即 3×f[n-2]；若不分开，则不可分解的方案只有两种，即2×（f[n-4]+f[n-6]+……+f[0])。</p>
+<p>由上可得
+f[i]=3×f[i-2]+2×(f[i-4]+f[i-6]+…+f[0]) ①</p>
+<p>f[i-2]=3×f[i-4]+2×(f[i-6]+…f[0]) ②</p>
+<p>①-②,得f[i]=4×f[i-2]-f[i-4].</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int main()
+{
+    int n;
+    int a[31];
+    a[0]=1;
+    a[2]=3;
+    int i;
+    for(i=1;i&lt;=30;i=i+2)
+        a[i]=0;
+    for(i=4;i&lt;=30;i=i+2)
+        a[i]=a[i-2]*4-a[i-4];
+    while (scanf(&quot;%d&quot;,&amp;n)&amp;&amp;n!=-1)
+        printf(&quot;%d\n&quot;,a[n]);
+    return 0;
+} 
+</code></pre>
+]]></content>
+    </entry>
+</feed>
