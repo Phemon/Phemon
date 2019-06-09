@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>【笔记】悬线法 | Phemon</title>
-<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1560072557899">
+<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1560072730554">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://www.phemon.me/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://www.phemon.me">
-  <img class="avatar" src="https://www.phemon.me/images/avatar.png?v=1560072557899" alt="">
+  <img class="avatar" src="https://www.phemon.me/images/avatar.png?v=1560072730554" alt="">
   </a>
   <h1 class="site-title">
     Phemon
@@ -141,8 +141,8 @@ for(int i=1;i&lt;=n;i++)
 <p>其实还是十分简单的。
 这个算法的思路像它的名字一样形象——悬线法：像一根线在移动探测各端点。</p>
 <h1 id="下面是n倍经验模板题时间"><strong>下面是N倍经验模板题时间</strong></h1>
-<p><a href="https://www.luogu.org/problemnew/show/P1387">Luogu P1387 最大正方形</a>
-挺模板的，直接上代码（我不会说这题用这个扯淡悬线法其实比直接DP慢好几倍的）。</p>
+<p><a href="https://www.luogu.org/problemnew/show/P1387">Luogu P1387 最大正方形</a></p>
+<p>挺模板的，直接上代码（我不会说这题用这个扯淡悬线法其实比直接DP慢好几倍的）。</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int n, m, a[110][110];
@@ -181,8 +181,8 @@ int main(){
     cout &lt;&lt; ans;
 }
 </code></pre>
-<p><a href="https://www.luogu.org/problemnew/show/P1169">Luogu P1169 [ZJOI2007]棋盘制作</a>
-虽然是ZJOI的水题，但是跟上一个题基本一样，注意条件变成了01相间，即 a[i][j]!=a[i][j±1]</p>
+<p><a href="https://www.luogu.org/problemnew/show/P1169">Luogu P1169 [ZJOI2007]棋盘制作</a></p>
+<p>虽然是ZJOI的水题，但是跟上一个题基本一样，注意条件变成了01相间，即 a[i][j]!=a[i][j±1]</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int n, m, a[4010][4010];
@@ -224,8 +224,8 @@ int main(){
     printf(&quot;%d\n%d&quot;, ans1, ans2);
 }
 </code></pre>
-<p><a href="https://www.luogu.org/problemnew/show/P4147">Luogu P4147 玉蟾宫</a>
-还是基本一样，最后面积乘以三就行</p>
+<p><a href="https://www.luogu.org/problemnew/show/P4147">Luogu P4147 玉蟾宫</a></p>
+<p>还是基本一样，最后面积乘以三就行</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int n, m;
@@ -265,16 +265,16 @@ int main()
 </code></pre>
 <p>放这个题的原因是此题还有一个单调栈的做法，也很巧妙。</p>
 <blockquote>
-<p>1.我们按行去划分，O(n)枚举行，对该行即以上的部分做最大矩阵处理；
-2.那么我们用pos数组记录每行向上可延伸的最大距离，预处理的方式即为：
-(1)读到一个‘F’，该处pos=上一行该列pos的值+1；
-(2)读到一个‘R’，该处pos=0（因为该处不可向上伸展）；
-3.那么对于每次枚举:对该行及以上的部分从左往右或从右往左进行一次单增栈，每次弹栈时更新最大面积;
-(1)栈内每个单位存入两个元素：该单位高度height和对应可控宽度length，对于每个大于栈顶直接入栈的元素，stack[i].length=1；
-(2)对于需要先弹栈再入栈的元素，其length=弹栈所有元素length之和+1，因为被弹栈的元素的高度均≥当前元素，所以其可控范围应加上被其弹栈元素的length；
-(3)在弹栈过程中，记录一个temp为本次弹栈到当前为止弹出的宽度，因为为单增栈，所以每个高度均可控其后被弹栈元素的宽度，所以其对应的面积为s=temp*h[i]，取max更新该行的maxs；
-4.对每次枚举的maxs取max即为最终答案；
-[FROM LUOGU.ORG @假假]</p>
+<p>1.我们按行去划分，O(n)枚举行，对该行即以上的部分做最大矩阵处理；</p>
+<p>2.那么我们用pos数组记录每行向上可延伸的最大距离，预处理的方式即为：</p>
+<p>(1)读到一个‘F’，该处pos=上一行该列pos的值+1；</p>
+<p>(2)读到一个‘R’，该处pos=0（因为该处不可向上伸展）；</p>
+<p>3.那么对于每次枚举:对该行及以上的部分从左往右或从右往左进行一次单增栈，每次弹栈时更新最大面积;</p>
+<p>(1)栈内每个单位存入两个元素：该单位高度height和对应可控宽度length，对于每个大于栈顶直接入栈的元素，stack[i].length=1；</p>
+<p>(2)对于需要先弹栈再入栈的元素，其length=弹栈所有元素length之和+1，因为被弹栈的元素的高度均≥当前元素，所以其可控范围应加上被其弹栈元素的length；</p>
+<p>(3)在弹栈过程中，记录一个temp为本次弹栈到当前为止弹出的宽度，因为为单增栈，所以每个高度均可控其后被弹栈元素的宽度，所以其对应的面积为s=temp*h[i]，取max更新该行的maxs；</p>
+<p>4.对每次枚举的maxs取max即为最终答案；</p>
+<p>[FROM LUOGU.ORG @假假]</p>
 </blockquote>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
@@ -349,9 +349,9 @@ int main(){
     return 0;
 }
 </code></pre>
-<p><a href="https://www.luogu.org/problemnew/show/P1578">Luogu P1578 奶牛浴场</a>
-继续用原来的方法显然会炸时间空间（both）。
-这回横着扫一遍，竖着扫一遍。</p>
+<p><a href="https://www.luogu.org/problemnew/show/P1578">Luogu P1578 奶牛浴场</a></p>
+<p>继续用原来的方法显然会炸时间空间（both）。</p>
+<p>这回横着扫一遍，竖着扫一遍。</p>
 <pre><code>【代码来自luogu.org @A·H_】
 #include&lt;iostream&gt;
 #include&lt;cstdio&gt;
