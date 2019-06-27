@@ -1,9 +1,9 @@
 <html>
   <head>
-  <meta charset="utf-8" />
+    <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>笔记 | Phemon</title>
+<title>2019暑假摸鱼日记 | Phemon</title>
 <link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1561635684801">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -91,44 +91,69 @@
   <p id="hitokoto">一言加载中……（无法显示请刷新）</p>
 </div>
 
-        <div class="current-tag-container">
-            <h2 class="title">
-                标签：#笔记
-            </h2> 
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              2019暑假摸鱼日记
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-06-27 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>2019/6/27
+摸鱼。
+期末考完了。
+考得……
+算了。</p>
+<p>2019/6/28</p>
+
+            </div>
+          </article>
         </div>
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://www.phemon.me/post/bi-ji-xuan-xian-fa">
-        <h2 class="post-title">【笔记】悬线法</h2>
-      </a>
-      <div class="post-info">
-        <time class="post-time">
-          · 2019-04-19 ·
-        </time>
-        
-          <a href="https://www.phemon.me/tag/notes" class="post-tag">
-            # 笔记
-          </a>
-        
-          <a href="https://www.phemon.me/tag/oi" class="post-tag">
-            # OI
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        <p>悬线法，用于求解最大子矩阵问题。</p>
 
-      </di>
-    </article>
-  
-</div>
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://www.phemon.me/post/haoganjisuan">
+              <h3 class="post-title">
+                如何计算女生对你的好感度？
+              </h3>
+            </a>
+          </div>
+        
 
-        <div class="pagination-container">
-  
-  
-</div>
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'a3cc5c1b8b629705dce5',
+    clientSecret: '18ceb9d591e7ed0a3f5ca0d147314314c098611c',
+    repo: 'gitalk',
+    owner: 'Phemon',
+    admin: ['Phemon'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
 
         <div class="site-footer">
   by PhemonLiu | 
