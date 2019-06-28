@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>【题解】农夫约的假期 | Phemon</title>
-<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1561704320710">
+<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1561704560978">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://www.phemon.me/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://www.phemon.me">
-  <img class="avatar" src="https://www.phemon.me/images/avatar.png?v=1561704320710" alt="">
+  <img class="avatar" src="https://www.phemon.me/images/avatar.png?v=1561704560978" alt="">
   </a>
   <h1 class="site-title">
     Phemon
@@ -113,13 +113,13 @@
             </div>
             
             <div class="post-content">
-              <p>这题看题面是看不懂的，神题一枚。需要通过样例推测题面。
+              <p>这题看题面是看不懂的，神题一枚。需要通过样例推测题面。<br>
 这题的坑点在于，声音可以拐弯。如果不能拐弯，样例中的最佳点应该在为 2 1。</p>
 <!-- more -->
-<p>这样，声音的加强值=（z*曼哈顿距离）（题面中好像忘了写z是干什么用的） 。
-看数据范围，n,m&lt;=100000，显然开不下二维数组来保存他们。显然，不存在O（1）解法（因为需要对输入的点进行处理）。
-把行和列分开考虑，显然（曼哈顿距离），你选择的点的横（纵）坐标与其他所有点的横（纵）坐标的差的绝对值总和最小时，方案最优。
-显然，可以发现选择中位数时最优（如果你认为这不显然请去做一下货仓选址问题）。
+<p>这样，声音的加强值=（z*曼哈顿距离）（题面中好像忘了写z是干什么用的） 。<br>
+看数据范围，n,m&lt;=100000，显然开不下二维数组来保存他们。显然，不存在O（1）解法（因为需要对输入的点进行处理）。<br>
+把行和列分开考虑，显然（曼哈顿距离），你选择的点的横（纵）坐标与其他所有点的横（纵）坐标的差的绝对值总和最小时，方案最优。<br>
+显然，可以发现选择中位数时最优（如果你认为这不显然请去做一下货仓选址问题）。<br>
 题目不要求选择的点必须在给出的m个点上，所以直接把行和列分开考录。分别排序后取中位数，求出魔音值即可。</p>
 <pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;

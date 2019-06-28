@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.phemon.me</id>
     <title>Phemon</title>
-    <updated>2019-06-28T06:45:22.662Z</updated>
+    <updated>2019-06-28T06:49:23.507Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.phemon.me"/>
     <link rel="self" href="https://www.phemon.me/atom.xml"/>
@@ -16,17 +16,17 @@
         <link href="https://www.phemon.me/post/2019-shu-jia-mo-yu-ri-ji">
         </link>
         <updated>2019-06-27T11:39:30.000Z</updated>
-        <content type="html"><![CDATA[<p><strong>2019/6/27</strong></p>
-<p>摸鱼。</p>
-<p>期末考完了。</p>
-<p>考得……</p>
-<p>算了。</p>
-<p><strong>2019/6/28</strong></p>
-<p>摸鱼。</p>
-<p>后天有集体舞大赛，据说是明天后天全天都要在跳舞。其实有个集体活动参加还挺好的，毕竟上次运动会就因为竞赛没参加，但是实在是太累了，学校不能安排些学生们欢迎一点的活动么？W中午发通知说明天后天有安排，这样就不用参加集体舞大赛了，但是我跟LQJ说了后LQJ让W下午给他打电话，不知结果如何，但是我估计大概率还得跳舞，W应该不会跟LQJ刚。</p>
-<p>CF#571时间不错，好不容易有个北京时间下午场，我下午就一节课还是四点十分开始，正好卡着时间。算了，报上吧。到时候如果题目不可做就不提交了，以免掉rating。</p>
-<p>期末考试，我在生物上花了地理许多倍的功夫，地理没好好学，结果地理还是正数，生物还是倒数，生物填空题就没拿几分。除了生物，物理和数学也爆炸。今天中午偶然碰见W，他还问我数学分，我说了以后他一副恨铁不成钢的样子。</p>
-<p>……</p>
+        <content type="html"><![CDATA[<p><strong>2019/6/27</strong><br>
+摸鱼。<br>
+期末考完了。<br>
+考得……<br>
+算了。</p>
+<p><strong>2019/6/28</strong><br>
+摸鱼。<br>
+后天有集体舞大赛，据说是明天后天全天都要在跳舞。其实有个集体活动参加还挺好的，毕竟上次运动会就因为竞赛没参加，但是实在是太累了，学校不能安排些学生们欢迎一点的活动么？W中午发通知说明天后天有安排，这样就不用参加集体舞大赛了，但是我跟LQJ说了后LQJ让W下午给他打电话，不知结果如何，但是我估计大概率还得跳舞，W应该不会跟LQJ刚。<br>
+CF#571时间不错，好不容易有个北京时间下午场，我下午就一节课还是四点十分开始，正好卡着时间。算了，报上吧。到时候如果题目不可做就不提交了，以免掉rating。<br>
+期末考试，我在生物上花了地理许多倍的功夫，地理没好好学，结果地理还是正数，生物还是倒数，生物填空题就没拿几分。除了生物，物理和数学也爆炸。今天中午偶然碰见W，他还问我数学分，我说了以后他一副恨铁不成钢的样子。<br>
+……</p>
 <p><strong>2019/6/29</strong></p>
 ]]></content>
     </entry>
@@ -54,15 +54,6 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><mi>m</mi><mi>l</mi><mo>(</mo><mi>s</mi><mi>u</mi><mi>m</mi><mrow></mrow><mi>o</mi><mi>f</mi><mrow></mrow><mi>l</mi><mi>i</mi><mi>k</mi><mi>e</mi><mo>)</mo><mo>=</mo><mi mathvariant="normal">她</mi><mi mathvariant="normal">对</mi><mi mathvariant="normal">你</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">总</mi><mi mathvariant="normal">好</mi><mi mathvariant="normal">感</mi><mi mathvariant="normal">数</mi></mrow><annotation encoding="application/x-tex">suml(sum{ }of{ }like)=她对你的总好感数</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord"></span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">她</span><span class="mord cjk_fallback">对</span><span class="mord cjk_fallback">你</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">总</span><span class="mord cjk_fallback">好</span><span class="mord cjk_fallback">感</span><span class="mord cjk_fallback">数</span></span></span></span></p>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mi>e</mi><mi>g</mi><mi>i</mi><mi>n</mi><mo>=</mo><mi mathvariant="normal">第</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">次</mi><mi mathvariant="normal">聊</mi><mi mathvariant="normal">天</mi><mo separator="true">,</mo><mi mathvariant="normal">通</mi><mi mathvariant="normal">常</mi><mi mathvariant="normal">取</mi><mn>0</mn></mrow><annotation encoding="application/x-tex">begin=第一次聊天,通常取0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord cjk_fallback">第</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">次</span><span class="mord cjk_fallback">聊</span><span class="mord cjk_fallback">天</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">通</span><span class="mord cjk_fallback">常</span><span class="mord cjk_fallback">取</span><span class="mord">0</span></span></span></span></p>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>o</mi><mi>w</mi><mo>=</mo><mi mathvariant="normal">截</mi><mi mathvariant="normal">至</mi><mi mathvariant="normal">现</mi><mi mathvariant="normal">在</mi><mi mathvariant="normal">聊</mi><mi mathvariant="normal">天</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">天</mi><mi mathvariant="normal">数</mi></mrow><annotation encoding="application/x-tex">now=截至现在聊天的天数</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">截</span><span class="mord cjk_fallback">至</span><span class="mord cjk_fallback">现</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">聊</span><span class="mord cjk_fallback">天</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">天</span><span class="mord cjk_fallback">数</span></span></span></span></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[【笔记】k短路]]></title>
-        <id>https://www.phemon.me/post/bi-ji-k-duan-lu</id>
-        <link href="https://www.phemon.me/post/bi-ji-k-duan-lu">
-        </link>
-        <updated>2019-06-12T10:42:04.000Z</updated>
-        <content type="html"><![CDATA[<p>咕咕咕</p>
 ]]></content>
     </entry>
     <entry>
@@ -167,16 +158,16 @@ int main(){
         <link href="https://www.phemon.me/post/ti-jie-nong-fu-yue-de-jia-qi">
         </link>
         <updated>2019-05-04T12:11:36.000Z</updated>
-        <summary type="html"><![CDATA[<p>这题看题面是看不懂的，神题一枚。需要通过样例推测题面。
+        <summary type="html"><![CDATA[<p>这题看题面是看不懂的，神题一枚。需要通过样例推测题面。<br>
 这题的坑点在于，声音可以拐弯。如果不能拐弯，样例中的最佳点应该在为 2 1。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>这题看题面是看不懂的，神题一枚。需要通过样例推测题面。
+        <content type="html"><![CDATA[<p>这题看题面是看不懂的，神题一枚。需要通过样例推测题面。<br>
 这题的坑点在于，声音可以拐弯。如果不能拐弯，样例中的最佳点应该在为 2 1。</p>
 <!-- more -->
-<p>这样，声音的加强值=（z*曼哈顿距离）（题面中好像忘了写z是干什么用的） 。
-看数据范围，n,m&lt;=100000，显然开不下二维数组来保存他们。显然，不存在O（1）解法（因为需要对输入的点进行处理）。
-把行和列分开考虑，显然（曼哈顿距离），你选择的点的横（纵）坐标与其他所有点的横（纵）坐标的差的绝对值总和最小时，方案最优。
-显然，可以发现选择中位数时最优（如果你认为这不显然请去做一下货仓选址问题）。
+<p>这样，声音的加强值=（z*曼哈顿距离）（题面中好像忘了写z是干什么用的） 。<br>
+看数据范围，n,m&lt;=100000，显然开不下二维数组来保存他们。显然，不存在O（1）解法（因为需要对输入的点进行处理）。<br>
+把行和列分开考虑，显然（曼哈顿距离），你选择的点的横（纵）坐标与其他所有点的横（纵）坐标的差的绝对值总和最小时，方案最优。<br>
+显然，可以发现选择中位数时最优（如果你认为这不显然请去做一下货仓选址问题）。<br>
 题目不要求选择的点必须在给出的m个点上，所以直接把行和列分开考录。分别排序后取中位数，求出魔音值即可。</p>
 <pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;
@@ -529,9 +520,9 @@ int main(){
 ]]></summary>
         <content type="html"><![CDATA[<p>长教训了，以后绝对不随便报CF比赛。</p>
 <!-- more -->
-<p>报了GlobalRound2，Problem A知道是二分，但是懒得写那几行，写了暴力连Pretest都过不去，老老实实写二分，Pretest通过。
-Problem B 感觉还是二分啊？？？？？把Problem A一改过了样例就交，结果Pretest就WA。又看了两遍没发现自己哪错了，觉得不可做就去打实况了。
-结果第二天再登发现自己Problem A也挂了。
+<p>报了GlobalRound2，Problem A知道是二分，但是懒得写那几行，写了暴力连Pretest都过不去，老老实实写二分，Pretest通过。<br>
+Problem B 感觉还是二分啊？？？？？把Problem A一改过了样例就交，结果Pretest就WA。又看了两遍没发现自己哪错了，觉得不可做就去打实况了。<br>
+结果第二天再登发现自己Problem A也挂了。<br>
 rank一下掉了100多。</p>
 ]]></content>
     </entry>
@@ -541,16 +532,16 @@ rank一下掉了100多。</p>
         <link href="https://www.phemon.me/post/codeforces-538-div2">
         </link>
         <updated>2019-02-21T15:04:53.000Z</updated>
-        <summary type="html"><![CDATA[<p>22:05场，对我来说没什么熬夜的压力，但是，但是，但是…… 这时候有热刺-莱斯特城啊。
-21:30开始的英超，看到22:02急急忙忙去开电脑，然后还有20秒到22:05的时候，准备开始看Problem A，然后 就进球了。
+        <summary type="html"><![CDATA[<p>22:05场，对我来说没什么熬夜的压力，但是，但是，但是…… 这时候有热刺-莱斯特城啊。<br>
+21:30开始的英超，看到22:02急急忙忙去开电脑，然后还有20秒到22:05的时候，准备开始看Problem A，然后 就进球了。<br>
 急忙去看回放，然后等开始写的时候已经开始五分钟了。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>22:05场，对我来说没什么熬夜的压力，但是，但是，但是…… 这时候有热刺-莱斯特城啊。
-21:30开始的英超，看到22:02急急忙忙去开电脑，然后还有20秒到22:05的时候，准备开始看Problem A，然后 就进球了。
+        <content type="html"><![CDATA[<p>22:05场，对我来说没什么熬夜的压力，但是，但是，但是…… 这时候有热刺-莱斯特城啊。<br>
+21:30开始的英超，看到22:02急急忙忙去开电脑，然后还有20秒到22:05的时候，准备开始看Problem A，然后 就进球了。<br>
 急忙去看回放，然后等开始写的时候已经开始五分钟了。</p>
 <!-- more -->
-<p>一看Problem A，就知道这次要凉。
-虽然难度还是不大，但是英文题面还是比以前略难理解 00:08 submit Problem A，居然是一遍过（现在pj-能一遍过对我来说是奢望）。
+<p>一看Problem A，就知道这次要凉。<br>
+虽然难度还是不大，但是英文题面还是比以前略难理解 00:08 submit Problem A，居然是一遍过（现在pj-能一遍过对我来说是奢望）。<br>
 和以前一样，模拟题，题意不解释了。</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
@@ -576,9 +567,9 @@ int main(){
 }  
 </code></pre>
 <p>Problem B看了半天都不会，然后就去看球了^-^，应该是个贪心，代码还没提交不知道对不对就先不发了。（其实仔细看看好像还挺简单的，好像把前mk个数分开就好了，但是当时光顾着看球了）。</p>
-<p>Problem C还是挺简单的（我觉得） 就是求n!在k进制下末尾零的个数。看完球离比赛结束就不到半个小时了，慌慌忙忙写完了，还挺幸运的，最后也是一遍过。
-n！能整除几个k，那末尾就有几个0（短除法转换进制，显然可得此结论）。
-给k分解质因数，然后对于每个质因数，求出n!里有多少个质因数，然后如果k里有x个这个质因数，则求出的结果除以x。最后的答案为这些结果的最小值。
+<p>Problem C还是挺简单的（我觉得） 就是求n!在k进制下末尾零的个数。看完球离比赛结束就不到半个小时了，慌慌忙忙写完了，还挺幸运的，最后也是一遍过。<br>
+n！能整除几个k，那末尾就有几个0（短除法转换进制，显然可得此结论）。<br>
+给k分解质因数，然后对于每个质因数，求出n!里有多少个质因数，然后如果k里有x个这个质因数，则求出的结果除以x。最后的答案为这些结果的最小值。<br>
 如何求n!里包含质因数的个数？由于n!是1乘到n，所以每p(p是质数)个数里一定有一个p，然后这些数中每p个里一定还有个p，以此类推即可算出。</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
@@ -600,7 +591,7 @@ int main(){
     return 0;
 } 
 </code></pre>
-<p>剩下的基本就不太会了（Problem D是个区间dp？看题的时候一边看球，没仔细想）。
+<p>剩下的基本就不太会了（Problem D是个区间dp？看题的时候一边看球，没仔细想）。<br>
 这一晚上基本上没干啥，但是我学到了一个教训：</p>
 <blockquote>
 <pre><code>  	足球和OI不可兼得。
@@ -620,12 +611,12 @@ int main(){
         <content type="html"><![CDATA[<p><a href="https://uva.onlinejudge.org/external/109/p10918.pdf">题目描述传送门</a></p>
 <p>题意：对3×n的面积使用1×2的块进行完美覆盖，计算方案总数。</p>
 <!-- more -->
-<p>1.若n为奇数，则3×n为奇数，所以用1×2的块无法进行完美覆盖，方案数为0。</p>
-<p>2.若n为偶数，将这n列每2列分开，如果这一列与前面分开，就只有三种方法即 3×f[n-2]；若不分开，则不可分解的方案只有两种，即2×（f[n-4]+f[n-6]+……+f[0])。</p>
-<p>由上可得
-f[i]=3×f[i-2]+2×(f[i-4]+f[i-6]+…+f[0]) ①</p>
-<p>f[i-2]=3×f[i-4]+2×(f[i-6]+…f[0]) ②</p>
-<p>①-②,得f[i]=4×f[i-2]-f[i-4].</p>
+<p>1.若n为奇数，则3×n为奇数，所以用1×2的块无法进行完美覆盖，方案数为0。<br>
+2.若n为偶数，将这n列每2列分开，如果这一列与前面分开，就只有三种方法即 3×f[n-2]；若不分开，则不可分解的方案只有两种，即2×（f[n-4]+f[n-6]+……+f[0])。<br>
+由上可得<br>
+f[i]=3×f[i-2]+2×(f[i-4]+f[i-6]+…+f[0]) ①<br>
+f[i-2]=3×f[i-4]+2×(f[i-6]+…f[0]) ②<br>
+①-②,得f[i]=4×f[i-2]-f[i-4].</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int main()
