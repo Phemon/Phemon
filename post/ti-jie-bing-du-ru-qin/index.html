@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>【题解】病毒入侵 | Phemon</title>
-<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1562578274206">
+<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1565962995987">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://www.phemon.me/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://www.phemon.me">
-  <img class="avatar" src="https://www.phemon.me/images/avatar.png?v=1562578274206" alt="">
+  <img class="avatar" src="https://www.phemon.me/images/avatar.png?v=1565962995987" alt="">
   </a>
   <h1 class="site-title">
     Phemon
@@ -116,7 +116,7 @@
               <p>这数据强度，每次询问跑一遍肯定是不行的，考虑把询问离线。</p>
 <p>显然，可以把询问和给出的边都按照v从小到大排序，依次考虑每个询问，对于每次询问，加入不大于该询问的v的边，同时使用一个并查集进行统计，同时统计该联通块点个数、最大值和最大值个数。</p>
 <!-- more -->
-<p>这种模拟，当时敲了四十多分钟，还是太菜了！
+<p>这种模拟，当时敲了四十多分钟，还是太菜了！<br>
 压着2s时限ac的代码：</p>
 <pre><code>#include &lt;bits/stdc++.h&gt;
 using namespace std;

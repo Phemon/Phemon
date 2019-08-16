@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>【笔记】悬线法 | Phemon</title>
-<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1562578274206">
+<link rel="shortcut icon" href="https://www.phemon.me/favicon.ico?v=1565962995987">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://www.phemon.me/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://www.phemon.me">
-  <img class="avatar" src="https://www.phemon.me/images/avatar.png?v=1562578274206" alt="">
+  <img class="avatar" src="https://www.phemon.me/images/avatar.png?v=1565962995987" alt="">
   </a>
   <h1 class="site-title">
     Phemon
@@ -115,10 +115,10 @@
             <div class="post-content">
               <p>悬线法，用于求解最大子矩阵问题。</p>
 <!-- more -->
-<p>有效子矩形：内部不包含障碍点的、轮廓与整个矩形平行或重合的子矩形。
-极大子矩形：每条边都不能向外扩展的有效子矩形。
+<p>有效子矩形：内部不包含障碍点的、轮廓与整个矩形平行或重合的子矩形。<br>
+极大子矩形：每条边都不能向外扩展的有效子矩形。<br>
 最大子矩形：所有有效子矩形中最大的一个（或多个）。</p>
-<p>思路： 在一个有障碍点的矩形中最大子矩形一定是极大子矩形。 所以枚举所有的极大子矩形，找到最大子矩形。
+<p>思路： 在一个有障碍点的矩形中最大子矩形一定是极大子矩形。 所以枚举所有的极大子矩形，找到最大子矩形。<br>
 本质为动态规划？</p>
 <p>转移：</p>
 <pre><code>/* 定义：left[i][j]表示从(i,j)这个点出发向【左】能到达最远的【坐标】
@@ -144,7 +144,7 @@ for(int i=1;i&lt;=n;i++)
         if(满足条件)
             left[i][j]=left[i][j+1];
 </code></pre>
-<p>其实还是十分简单的。
+<p>其实还是十分简单的。<br>
 这个算法的思路像它的名字一样形象——悬线法：像一根线在移动探测各端点。</p>
 <h1 id="下面是n倍经验模板题时间"><strong>下面是N倍经验模板题时间</strong></h1>
 <p><a href="https://www.luogu.org/problemnew/show/P1387">Luogu P1387 最大正方形</a></p>
